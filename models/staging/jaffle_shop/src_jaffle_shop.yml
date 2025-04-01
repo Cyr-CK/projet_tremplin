@@ -1,9 +1,26 @@
 version: 2
 
 sources:
-  - name: jaffle_shop
-    database: dbt-tutorial
-    schema: jaffle_shop
+  - name: dbt_bq_taxi
+    database: projet-tremplin-455109
+    schema: dbt_bq_taxi
     tables:
-      - name: customers
-      - name: orders
+      - name: taxi_zone_lookup
+      - name: yellow_tripdata_2019-01
+      - name: yellow_tripdata_2019-02
+      - name: yellow_tripdata_2019-03
+      - name: yellow_tripdata_2019-04
+      - name: yellow_tripdata_2019-05
+      - name: yellow_tripdata_2019-06
+      - name: yellow_tripdata_2019-07
+      - name: yellow_tripdata_2019-08
+      - name: yellow_tripdata_2019-09
+      - name: yellow_tripdata_2019-10
+      - name: yellow_tripdata_2019-11
+      - name: yellow_tripdata_2019-12
+      - name: yellow_tripdata_2020-01
+      - name: yellow_tripdata_2020-02
+      - name: yellow_tripdata_2020-03
+      - name: yellow_tripdata_2020-04
+      - name: yellow_tripdata_2020-05
+      - name: yellow_tripdata_2020-06

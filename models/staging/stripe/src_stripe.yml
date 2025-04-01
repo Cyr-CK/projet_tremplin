@@ -1,15 +1,15 @@
 version: 2
 
 sources:
-  - name: stripe
-    database: dbt-tutorial
-    schema: stripe
+  - name: dbt_bq_weather
+    database: projet-tremplin-455109
+    schema: dbt_bq_weather
     tables:
-      - name: payment
-        loaded_at_field: _batched_at
-        freshness: 
-          error_after:
-            count: 24
-            period: hour
-          warn_after: {count: 24, period: hour}
+      - name: NYC_weather_2016_2022
+        # loaded_at_field: _batched_at
+        # freshness: 
+        #   error_after:
+        #     count: 24
+        #     period: hour
+        #   warn_after: {count: 24, period: hour}
         
