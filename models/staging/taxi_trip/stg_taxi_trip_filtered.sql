@@ -1,15 +1,15 @@
--- select
---   *
--- from
---   {{ source('dbt_bq_taxi', 'taxi_zone_lookup') }}
-
 select 
---   tpep_pickup_datetime,
---   tpep_dropoff_datetime,
---   passenger_count
-  *
+  tpep_pickup_datetime,
+  tpep_dropoff_datetime,
+  passenger_count,
+  trip_distance,
+  RatecodeID,
+  PULocationID,
+  DOLocationID,
+  payment_type,
+  tip_amount
 from 
-  {{ source('dbt_bq_taxi', 'yellow_tripdata_2019-01') }}
+  {{ ref('stg_taxi_trip') }}
 where
   vendorID in (1,2) 
   and
@@ -28,15 +28,18 @@ where
   DOLocationID < 264
   and
   payment_type in (1,2)
-  and 
+  and
   fare_amount between 1 and 300
   and
-  extra > 0
+  extra in (0,0.5,1)
+  and 
+  mta_tax = 0.5
   and
   tip_amount between 0 and 50
   and
   tolls_amount between 0 and 50
-  and 
-  total_amount between 0 and 400
-order by
-  total_amount desc
+  and
+  improvement_surcharge = 0.3
+  and
+  total_amount between 1 and 400
+  

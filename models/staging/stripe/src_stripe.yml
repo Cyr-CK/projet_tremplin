@@ -1,11 +1,11 @@
 version: 2
 
 sources:
-  - name: dbt_bq_weather
-    database: projet-tremplin-455109
-    schema: dbt_bq_weather
+  - name: stripe
+    database: dbt-initiation
+    schema: stripe
     tables:
-      - name: NYC_Weather_2016_2022
+      - name: payment
         # loaded_at_field: _batched_at
         # freshness: 
         #   error_after:
