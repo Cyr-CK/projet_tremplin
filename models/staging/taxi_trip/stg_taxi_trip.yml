@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_taxi_trip
+    description: Staged taxi trip data from Kaggle NYC Taxi Trip dataset.
+    columns:
+      - name: PULocationID
+        description: Foreign key to stg_taxi_trip__zone.LocationID.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_taxi_trip__zone')
+              field: LocationID              
+  - name: stg_taxi_trip__zone
+    description: Staged NYC neighborhood zones.
+    columns:
+      - name: LocationID
+        description: Primary key for NYC locations.
+        data_tests:
+          - unique
+          - not_null
+    # columns:
+    #   - name: customer_id
+    #     description: The primary key for customers.
+    #     data_tests:
+    #       - unique
+    #       - not_null
+    #   - name: order_id
+    #     description: Primary key for orders.
+    #     data_tests:
+    #       - unique
+    #       - not_null
+    #   - name: status
+    #     description: "{{ doc('order_status')}}"
+    #     data_tests:
+    #       - accepted_values:
+    #           values:
+    #             - completed
+    #             - shipped
+    #             - returned
+    #             - return_pending
+    #             - placed
+    #   - name: customer_id
+    #     description: Foreign key to stg_customers.customer_id
+    #     data_tests:
+    #       - relationships:
+    #           to: ref('stg_jaffle_shop__customers')
+    #           field: customer_id

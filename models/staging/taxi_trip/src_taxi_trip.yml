@@ -5,7 +5,7 @@ sources:
     database: projet-tremplin-455109
     schema: dbt_bq_taxi
     tables:
-      - name: taxi_zone_lookup
+      - name: taxi_zone_geo
       - name: yellow_tripdata_2019-01
       - name: yellow_tripdata_2019-02
       - name: yellow_tripdata_2019-03

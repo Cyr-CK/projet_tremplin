@@ -1,42 +1,4 @@
--- select
---   *
--- from
---   {{ source('dbt_bq_taxi', 'taxi_zone_lookup') }}
-
-select 
---   tpep_pickup_datetime,
---   tpep_dropoff_datetime,
---   passenger_count
+select
   *
-from 
-  {{ source('dbt_bq_taxi', 'yellow_tripdata_2019-01') }}
-where
-  vendorID in (1,2) 
-  and
-  tpep_pickup_datetime between '2019-01-01' and '2020-06-30'
-  and
-  tpep_dropoff_datetime between '2019-01-01' and '2020-06-30'
-  and
-  passenger_count > 0
-  and
-  trip_distance between 0.1 and 40
-  and
-  RatecodeID != 99
-  and
-  PULocationID < 264
-  and 
-  DOLocationID < 264
-  and
-  payment_type in (1,2)
-  and 
-  fare_amount between 1 and 300
-  and
-  extra > 0
-  and
-  tip_amount between 0 and 50
-  and
-  tolls_amount between 0 and 50
-  and 
-  total_amount between 0 and 400
-order by
-  total_amount desc
+from
+  {{ source('dbt_bq_taxi', 'taxi_zone_geo') }}
