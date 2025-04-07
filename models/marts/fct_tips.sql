@@ -22,3 +22,5 @@ select
   *
 from
   {{ ref('int_taxi_trip') }}
+where
+  payment_type = 1

@@ -5,7 +5,7 @@ sources:
     database: projet-tremplin-455109
     schema: dbt_bq_weather
     tables:
-      - name: NYC_Weather_2016_2022
+      - name: NYC_weather
         # loaded_at_field: _batched_at
         # freshness: 
         #   error_after:

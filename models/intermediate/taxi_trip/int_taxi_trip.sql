@@ -31,7 +31,7 @@ where
 --   and 
 --   DOLocationID < 264
 --   and
-  payment_type = 1-- between 1 and 6
+--   payment_type = 1-- between 1 and 6
   and
   fare_amount >= 0
   and

@@ -1,16 +1,16 @@
 -- ################# GROUP BY LOCATION
 
-select 
-  PULocationID,
-  DOLocationID,
-  round(sum(tip_amount),2) as total_tips
-from
-  {{ ref('int_taxi_trip') }}
-where
-  PULocationID = 186
-group by
-  PULocationID,
-  DOLocationID
+-- select 
+--   PULocationID,
+--   DOLocationID,
+--   round(sum(tip_amount),2) as total_tips
+-- from
+--   {{ ref('int_taxi_trip') }}
+-- where
+--   PULocationID = 186
+-- group by
+--   PULocationID,
+--   DOLocationID
 
 -- ################# GROUP BY HOUR
 
@@ -38,6 +38,8 @@ group by
 --   pick_hour,
 --   drop_hour
 
+-- ################# GROUP BY RATECODEID
+
 -- select 
 --   RatecodeID,
 --   round(sum(tip_amount),2) as total_tips,
@@ -46,3 +48,19 @@ group by
 --   {{ ref('int_taxi_trip') }}
 -- group by
 --   RatecodeID
+
+select 
+  day_of_week,
+  PULocationID,
+  DOLocationID,
+  extract(hour from pickup_hour) as pick_hour,
+  extract(hour from dropoff_hour) as drop_hour,
+  round(sum(tip_amount),2) as total_tips
+from
+  {{ ref('int_taxi_trip') }}
+group by
+  day_of_week,
+  pick_hour,
+  drop_hour,
+  PULocationID,
+  DOLocationID
